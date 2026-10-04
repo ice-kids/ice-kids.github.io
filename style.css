@@ -107,7 +107,8 @@ svg{flex:none}
 
 /* ---------- Sabores ---------- */
 .sabores{padding:30px 0 70px}
-.grade-sabores{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.grade-sabores{display:flex;flex-wrap:wrap;justify-content:center;gap:18px}
+.grade-sabores .sabor{flex:0 0 calc((100% - 72px) / 5)}
 .sabor{position:relative;border-radius:var(--raio);overflow:hidden;background:linear-gradient(var(--c1),var(--c2));
   box-shadow:var(--sombra);transition:transform .25s cubic-bezier(.3,1.6,.6,1),box-shadow .25s;cursor:default}
 .sabor img{width:100%;aspect-ratio:1;object-fit:cover;object-position:center top;transition:transform .4s}
@@ -277,3 +278,10 @@ svg{flex:none}
 }
 @media (max-width:760px){ .grade-sabores{grid-template-columns:repeat(2,1fr);gap:12px} }
 @media (max-width:640px){ .sabor h3{font-size:1.15rem} }
+/* novas imagens */
+.logo img{height:58px}
+.hero-img img{-webkit-mask-image:none;mask-image:none;max-width:600px;filter:drop-shadow(0 18px 30px rgba(90,0,40,.35))}
+@media (max-width:1180px){ .grade-sabores .sabor{flex-basis:calc((100% - 54px) / 4)} }
+@media (max-width:760px){ .grade-sabores{gap:12px} .grade-sabores .sabor{flex-basis:calc(50% - 6px)} }
+@media (max-width:640px){ .logo img{height:44px} .sabor:last-child:nth-child(odd){width:auto} }
+.marca{font-size:clamp(3.6rem,7.6vw,7.4rem)}

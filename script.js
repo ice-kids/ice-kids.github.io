@@ -38,7 +38,7 @@ const obs = new IntersectionObserver(entradas => {
 }, { threshold: 0.12 });
 document.querySelectorAll('.revela').forEach((el, i) => {
   if (el.classList.contains('sabor')) {
-    el.style.transitionDelay = (i % 10) * 50 + 'ms';
+    el.style.transitionDelay = (i % 9) * 50 + 'ms';
     el.addEventListener('transitionend', () => (el.style.transitionDelay = ''), { once: true });
   }
   obs.observe(el);
