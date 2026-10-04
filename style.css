@@ -1,0 +1,271 @@
+:root{
+  --rosa:#e8265f; --rosa-2:#f64b7b; --rosa-esc:#c4134a;
+  --amarelo:#ffd60a; --amarelo-2:#fbcc21;
+  --azul:#1667e0; --azul-esc:#16307a; --azul-claro:#e3f2fd;
+  --verde:#1fa84f; --verde-esc:#0f7a34;
+  --roxo:#4b3ab6;
+  --creme:#fdfbf6; --texto:#2b2340; --texto-2:#5d5672;
+  --sombra:0 10px 30px rgba(60,20,60,.12);
+  --raio:22px;
+  --fonte-tit:"Lilita One","Arial Rounded MT Bold",system-ui,sans-serif;
+  --fonte:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{font-family:var(--fonte);color:var(--texto);background:var(--creme);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+.wrap{width:min(1200px,100% - 32px);margin-inline:auto}
+svg{flex:none}
+
+/* ---------- Botões ---------- */
+.btn{display:inline-flex;align-items:center;gap:.55em;font-family:var(--fonte-tit);font-size:1.15rem;letter-spacing:.2px;
+  padding:.72em 1.35em;border-radius:999px;border:3px solid #fff;color:#fff;
+  box-shadow:0 5px 0 rgba(0,0,0,.18),0 10px 22px rgba(0,0,0,.15);transition:transform .18s,box-shadow .18s,filter .18s;white-space:nowrap}
+.btn svg{width:1.3em;height:1.3em}
+.btn b{font-size:1.3em;line-height:0;margin-left:.1em;font-weight:400}
+.btn:hover{transform:translateY(-3px);box-shadow:0 8px 0 rgba(0,0,0,.18),0 16px 28px rgba(0,0,0,.2);filter:saturate(1.15)}
+.btn:active{transform:translateY(2px);box-shadow:0 2px 0 rgba(0,0,0,.2)}
+.btn-amarelo{background:linear-gradient(#ffe34d,#ffc800);color:#7a2f1c}
+.btn-verde{background:linear-gradient(#34c759,#18a34a)}
+.btn-azul{background:linear-gradient(#2f86ff,#1460e0)}
+:focus-visible{outline:3px solid var(--azul);outline-offset:3px;border-radius:8px}
+
+/* ---------- Cabeçalho ---------- */
+.topo{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);
+  border-top:5px solid var(--rosa);box-shadow:0 2px 14px rgba(0,0,0,.06);transition:box-shadow .2s}
+.topo.rolou{box-shadow:0 6px 24px rgba(0,0,0,.12)}
+.topo-in{display:flex;align-items:center;gap:20px;height:74px}
+.logo img{height:54px;width:auto}
+.menu{display:flex;gap:6px;margin-inline:auto}
+.menu a{font-weight:800;color:var(--azul-esc);padding:.5em 1.05em;border-radius:12px;transition:background .15s,color .15s}
+.menu a:hover{background:#ffe3ee;color:var(--rosa)}
+.menu a.ativo{background:linear-gradient(#ff5d8f,var(--rosa));color:#fff;box-shadow:0 4px 10px rgba(232,38,95,.35)}
+.topo-acoes{display:flex;align-items:center;gap:16px}
+.insta-link{display:flex;align-items:center;gap:8px;font-weight:900;color:var(--azul-esc)}
+.insta-link:hover{color:var(--rosa)}
+.ico-insta{width:26px;height:26px}
+.btn-zap-topo{font-family:var(--fonte);font-weight:900;font-size:1rem;padding:.6em 1.2em;border:0;box-shadow:0 4px 12px rgba(24,163,74,.35)}
+.hamburguer{display:none;width:46px;height:46px;border:0;border-radius:14px;background:var(--rosa);cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:5px}
+.hamburguer span{width:22px;height:3px;border-radius:3px;background:#fff;transition:transform .25s,opacity .2s}
+.hamburguer[aria-expanded="true"] span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.hamburguer[aria-expanded="true"] span:nth-child(2){opacity:0}
+.hamburguer[aria-expanded="true"] span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;overflow:hidden;color:#fff;padding:34px 0 110px;
+  background:
+    radial-gradient(circle at 75% 45%,rgba(255,120,160,.55),transparent 55%),
+    radial-gradient(circle at 10% 10%,rgba(255,255,255,.12),transparent 30%),
+    linear-gradient(160deg,#e1205c 0%,#ec3369 50%,#f64b7b 100%)}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.12;
+  background-image:radial-gradient(#fff 1.5px,transparent 1.6px);background-size:26px 26px}
+.hero-in{position:relative;display:grid;grid-template-columns:1.05fr 1fr;align-items:center;gap:10px}
+.hero-marca{display:flex;align-items:center;gap:0}
+.mascote{width:clamp(130px,17vw,215px);margin-right:-18px;position:relative;z-index:1;
+  -webkit-mask-image:radial-gradient(ellipse 56% 56% at 52% 48%,#000 55%,transparent 100%);
+          mask-image:radial-gradient(ellipse 56% 56% at 52% 48%,#000 55%,transparent 100%);
+  animation:pula 3.2s ease-in-out infinite}
+@keyframes pula{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-12px) rotate(2deg)}}
+.marca{font-family:var(--fonte-tit);font-weight:400;font-size:clamp(4rem,9.5vw,8.6rem);line-height:.9;letter-spacing:-2px;
+  transform:rotate(-4deg);display:flex;filter:drop-shadow(0 8px 0 rgba(70,10,40,.35))}
+.marca span{display:inline-block;transition:transform .2s;--o:#fff;
+  text-shadow:4px 0 0 var(--o),-4px 0 0 var(--o),0 4px 0 var(--o),0 -4px 0 var(--o),3px 3px 0 var(--o),-3px 3px 0 var(--o),3px -3px 0 var(--o),-3px -3px 0 var(--o),
+  0 9px 0 #1d2550,4px 8px 0 #1d2550,-4px 8px 0 #1d2550}
+.marca span:hover{transform:translateY(-8px) rotate(-4deg)}
+.l-ice{color:#c8ebff}
+.l-k{color:#e3132c}.l-i{color:#1a5fd0}.l-d{color:#ffcc00}.l-s{color:#0f9d4a;margin-left:-2px}
+.slogan{font-family:var(--fonte-tit);font-size:clamp(1.8rem,3.4vw,3rem);line-height:1.08;margin:22px 0 26px 6%;
+  text-shadow:0 4px 0 rgba(120,10,50,.35)}
+.slogan em{font-style:normal;color:var(--amarelo)}
+.hero-btns{display:flex;flex-wrap:wrap;gap:14px}
+.selos{display:flex;flex-wrap:wrap;gap:30px;margin-top:28px;padding-left:10px}
+.selos li{display:flex;align-items:center;gap:10px;font-weight:800;font-size:.92rem;line-height:1.15}
+.selos svg{width:34px;height:34px;color:#fff;filter:drop-shadow(0 2px 2px rgba(0,0,0,.15))}
+.hero-img{position:relative}
+.hero-img img{width:100%;max-width:640px;margin-left:auto;
+  -webkit-mask-image:radial-gradient(ellipse 58% 56% at 52% 52%,#000 50%,transparent 100%);
+          mask-image:radial-gradient(ellipse 58% 56% at 52% 52%,#000 50%,transparent 100%);
+  animation:flutua 5s ease-in-out infinite}
+@keyframes flutua{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.onda{position:absolute;left:0;bottom:-1px;width:100%;height:90px;fill:var(--creme)}
+.folha{position:absolute;width:46px;height:28px;border-radius:0 100% 0 100%;background:linear-gradient(135deg,#7bd36a,#2e9a3a);opacity:.9;animation:folha 7s ease-in-out infinite}
+.f1{left:2%;top:58%;transform:rotate(-30deg)}
+.f2{left:47%;top:7%;width:36px;height:22px;animation-delay:-2s}
+.f3{right:3%;top:70%;width:40px;height:24px;animation-delay:-4s}
+@keyframes folha{0%,100%{translate:0 0;rotate:-20deg}50%{translate:6px -14px;rotate:10deg}}
+
+/* ---------- Títulos ---------- */
+.titulo{font-family:var(--fonte-tit);font-weight:400;font-size:clamp(2.4rem,5.5vw,4rem);text-align:center;line-height:1;position:relative;text-transform:uppercase}
+.titulo .rosa{color:var(--rosa);-webkit-text-stroke:2px #fff;paint-order:stroke fill;text-shadow:0 4px 0 #8c0d36}
+.titulo .azul{color:var(--azul-esc);text-shadow:0 4px 0 #0c1840}
+.respingo{display:inline-block;width:.6em;height:.6em;margin-left:.1em;vertical-align:top;
+  background:conic-gradient(from 200deg,transparent 0 10%,#ffcc00 10% 18%,transparent 18% 30%,#e8265f 30% 38%,transparent 38% 50%,#1fa7e8 50% 58%,transparent 58%);
+  -webkit-mask:radial-gradient(circle,transparent 30%,#000 32%);mask:radial-gradient(circle,transparent 30%,#000 32%);border-radius:50%}
+.subtitulo{text-align:center;font-weight:900;font-size:1.15rem;color:var(--azul-esc);margin:8px 0 34px}
+
+/* ---------- Sabores ---------- */
+.sabores{padding:30px 0 70px}
+.grade-sabores{display:grid;grid-template-columns:repeat(7,1fr);gap:14px}
+.sabor{position:relative;border-radius:var(--raio);overflow:hidden;background:linear-gradient(var(--c1),var(--c2));
+  box-shadow:var(--sombra);transition:transform .25s cubic-bezier(.3,1.6,.6,1),box-shadow .25s;cursor:default}
+.sabor img{width:100%;aspect-ratio:9/10;object-fit:cover;transition:transform .4s}
+.sabor h3{font-family:var(--fonte-tit);font-weight:400;font-size:1.45rem;text-align:center;padding:8px 4px 12px;color:var(--t);
+  background:linear-gradient(var(--c1),var(--c2))}
+.sabor:hover{transform:translateY(-10px) rotate(-1.5deg);box-shadow:0 22px 38px rgba(60,20,60,.22)}
+.sabor:hover img{transform:scale(1.08) rotate(2deg)}
+
+/* ---------- Serviços ---------- */
+.servicos{padding:60px 0;background:linear-gradient(180deg,#eef7fe,#e3f1fc)}
+.servicos-in{display:grid;grid-template-columns:300px 1fr;align-items:center;gap:30px}
+.alegria{font-family:var(--fonte-tit);font-weight:400;text-transform:uppercase;font-size:clamp(2rem,3.6vw,2.6rem);line-height:1.05;transform:rotate(-4deg)}
+.alegria span:first-child{color:var(--azul-esc);display:block}
+.alegria span:last-child{color:var(--rosa);display:block}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{background:#fff;border-radius:var(--raio);padding:26px 16px 22px;text-align:center;box-shadow:var(--sombra);
+  transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column;align-items:center}
+.card .ico{width:56px;height:56px;margin-bottom:10px}
+.card h3{font-family:var(--fonte);font-weight:900;font-size:1.1rem;line-height:1.15;margin-bottom:6px}
+.card p{color:var(--texto-2);font-weight:700;font-size:.95rem;line-height:1.3}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 34px rgba(30,60,120,.16)}
+.mini-cta{margin-top:10px;font-weight:900;font-size:.9rem;color:#fff;background:#f39200;padding:.35em .9em;border-radius:999px}
+
+/* ---------- Revenda ---------- */
+.revenda{padding:60px 0 40px;background:linear-gradient(180deg,#e3f1fc 0,var(--creme) 60%)}
+.faixa-revenda{position:relative;display:grid;grid-template-columns:200px auto 1fr auto;align-items:center;gap:22px;
+  background:linear-gradient(100deg,#ffe14a,#fbcc21);border-radius:28px;padding:18px 28px 18px 10px;border:4px solid #fff;
+  box-shadow:0 14px 34px rgba(160,110,0,.25)}
+.mascote-piscando{width:210px;margin:-58px 0 -18px;
+  -webkit-mask-image:radial-gradient(ellipse 58% 60% at 55% 52%,#000 62%,transparent 100%);
+          mask-image:radial-gradient(ellipse 58% 60% at 55% 52%,#000 62%,transparent 100%)}
+.revenda-txt h2{font-family:var(--fonte-tit);font-weight:400;text-transform:uppercase;font-size:clamp(2.2rem,4vw,3.2rem);line-height:.95;color:var(--rosa);transform:rotate(-3deg);
+  text-shadow:0 3px 0 #fff}
+.revenda-txt h2 span{display:block;color:var(--azul-esc)}
+.revenda-txt p{font-weight:800;color:var(--texto);margin-top:10px;transform:rotate(-3deg)}
+.revenda-txt strong{color:var(--rosa);font-weight:900}
+.beneficios{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;background:#fff;border-radius:18px;padding:14px 10px;box-shadow:0 6px 16px rgba(0,0,0,.08)}
+.beneficios li{display:flex;flex-direction:column;align-items:center;text-align:center;font-weight:800;font-size:.82rem;line-height:1.2;gap:6px;color:var(--texto)}
+.beneficios svg{width:36px;height:36px}
+.btn-grande{font-size:1.35rem;padding:.8em 1.6em}
+
+/* ---------- Instagram ---------- */
+.insta{position:relative;margin-top:30px;padding:40px 0;background:linear-gradient(120deg,#e1205c,#ef3a70 60%,#f64b7b);color:#fff;overflow:hidden}
+.insta::before{content:"";position:absolute;inset:0;opacity:.12;background-image:radial-gradient(#fff 1.5px,transparent 1.6px);background-size:26px 26px;pointer-events:none}
+.insta-in{position:relative;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:24px}
+.insta-chamada{display:flex;align-items:center;gap:6px}
+.insta-chamada img{width:160px;
+  -webkit-mask-image:radial-gradient(ellipse 56% 56% at 50% 50%,#000 58%,transparent 100%);mask-image:radial-gradient(ellipse 56% 56% at 50% 50%,#000 58%,transparent 100%)}
+.insta-chamada h2{font-family:var(--fonte-tit);font-weight:400;text-transform:uppercase;font-size:clamp(1.4rem,2.4vw,1.9rem);line-height:1.05;transform:rotate(-4deg)}
+.insta-chamada h2 span{color:var(--amarelo)}
+.pilula-insta{display:inline-flex;align-items:center;gap:10px;margin-top:14px;background:#fff;color:var(--azul-esc);font-weight:900;font-size:1.1rem;padding:.55em 1.2em;border-radius:999px;box-shadow:0 6px 14px rgba(0,0,0,.18);transition:transform .2s}
+.pilula-insta:hover{transform:scale(1.05) rotate(-2deg)}
+.insta-fotos img{width:100%;max-width:520px;margin:auto;transition:transform .3s;
+  -webkit-mask-image:radial-gradient(ellipse 62% 62% at 50% 50%,#000 64%,transparent 100%);mask-image:radial-gradient(ellipse 62% 62% at 50% 50%,#000 64%,transparent 100%)}
+.insta-fotos:hover img{transform:scale(1.04) rotate(-1deg)}
+.insta-freezer{position:relative;display:flex;align-items:center}
+.insta-freezer img{width:260px;
+  -webkit-mask-image:radial-gradient(ellipse 56% 58% at 50% 52%,#000 58%,transparent 100%);mask-image:radial-gradient(ellipse 56% 58% at 50% 52%,#000 58%,transparent 100%)}
+.bolha{font-family:var(--fonte-tit);text-transform:uppercase;text-align:center;line-height:1.05;font-size:1.15rem;background:var(--roxo);
+  padding:22px 20px;border-radius:50% 46% 52% 44%;margin-left:-40px;transform:rotate(4deg);box-shadow:0 10px 24px rgba(40,20,120,.35);border:3px solid #fff}
+.bolha span{color:var(--amarelo);font-size:1.6rem}
+
+/* ---------- Rodapé ---------- */
+.rodape{background:#fff;padding:26px 0 0;border-top:6px solid var(--amarelo)}
+.rodape-in{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.rodape-menu{display:flex;flex-wrap:wrap}
+.rodape-menu a{font-weight:800;color:var(--azul-esc);font-size:.95rem;padding:0 14px;border-left:2px solid #d9d4e6}
+.rodape-menu a:first-child{border-left:0}
+.rodape-menu a:hover{color:var(--rosa)}
+.contatos{display:flex;flex-direction:column;gap:8px;padding-right:24px;border-right:2px solid #eee}
+.contatos a{display:flex;align-items:center;gap:10px;font-weight:900;color:var(--azul-esc);font-size:1.05rem}
+.contatos a:hover{color:var(--rosa)}
+.ico-zap{width:28px;height:28px;color:#fff;background:#25d366;border-radius:50%;padding:3px}
+.local{display:flex;align-items:center;gap:10px;color:var(--texto-2);font-weight:700;font-size:.92rem}
+.local strong{color:var(--azul-esc);font-weight:900;font-size:1.02rem}
+.local svg{width:34px;height:34px;color:var(--rosa)}
+.copy{text-align:center;font-size:.85rem;font-weight:700;color:#8a84a0;padding:18px 16px 22px;margin-top:20px;border-top:1px solid #f0edf5}
+
+/* ---------- WhatsApp flutuante ---------- */
+.zap-flutuante{position:fixed;right:20px;bottom:20px;z-index:60;width:62px;height:62px;border-radius:50%;background:#25d366;color:#fff;
+  display:grid;place-items:center;box-shadow:0 8px 22px rgba(0,0,0,.25);animation:pulso 2.4s infinite}
+.zap-flutuante svg{width:34px;height:34px}
+.zap-flutuante:hover{transform:scale(1.08)}
+@keyframes pulso{0%{box-shadow:0 0 0 0 rgba(37,211,102,.55),0 8px 22px rgba(0,0,0,.25)}70%{box-shadow:0 0 0 18px rgba(37,211,102,0),0 8px 22px rgba(0,0,0,.25)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0),0 8px 22px rgba(0,0,0,.25)}}
+
+/* ---------- Animação de entrada ---------- */
+.js .revela{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.9,.3,1.2)}
+.js .revela.visivel{opacity:1;transform:none}
+.js .alegria.revela.visivel,.js .insta-chamada h2{transform:rotate(-4deg)}
+.js .sabor.revela.visivel:hover{transform:translateY(-10px) rotate(-1.5deg)}
+.js .card.revela.visivel:hover{transform:translateY(-6px)}
+
+/* ---------- Responsivo ---------- */
+@media (max-width:1180px){
+  .insta-link span{display:none}
+  .grade-sabores{grid-template-columns:repeat(4,1fr)}
+  .faixa-revenda{grid-template-columns:170px 1fr auto;row-gap:14px}
+  .mascote-piscando{width:180px}
+  .beneficios{grid-column:1/-1;order:3}
+  .insta-in{grid-template-columns:1fr 1fr}
+  .insta-freezer{grid-column:1/-1;justify-content:center}
+}
+@media (max-width:980px){
+  .hamburguer{display:flex}
+  .menu{position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:4px;padding:12px 16px 18px;background:#fff;
+    box-shadow:0 14px 24px rgba(0,0,0,.12);transform:translateY(-8px);opacity:0;visibility:hidden;transition:.22s}
+  .menu.aberto{transform:none;opacity:1;visibility:visible}
+  .menu a{padding:.8em 1em;font-size:1.05rem}
+  .topo-acoes{margin-left:auto}
+  .hero-in{grid-template-columns:1fr;text-align:left}
+  .hero-img img{max-width:560px;margin:0 auto}
+  .servicos-in{grid-template-columns:1fr}
+  .alegria{text-align:center;transform:rotate(-2deg)}
+  .js .alegria.revela.visivel{transform:rotate(-2deg)}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .rodape-in{justify-content:center;text-align:center}
+  .contatos{border-right:0;padding-right:0}
+}
+@media (max-width:640px){
+  .topo-in{height:64px}
+  .logo img{height:42px}
+  .btn-zap-topo span,.insta-link{display:none}
+  .btn-zap-topo{padding:.6em}
+  .btn-zap-topo svg{width:24px;height:24px}
+  .hero{padding:20px 0 90px}
+  .mascote{width:110px;margin-right:-14px}
+  .marca{font-size:clamp(3rem,16vw,4.6rem);letter-spacing:-1px}
+  .marca span{text-shadow:3px 0 0 #fff,-3px 0 0 #fff,0 3px 0 #fff,0 -3px 0 #fff,2px 2px 0 #fff,-2px 2px 0 #fff,2px -2px 0 #fff,-2px -2px 0 #fff,0 6px 0 #1d2550,3px 5px 0 #1d2550,-3px 5px 0 #1d2550}
+  .slogan{margin:16px 0 20px}
+  .hero-btns{flex-direction:column;align-items:stretch}
+  .hero-btns .btn{justify-content:center}
+  .selos{gap:16px;justify-content:space-between;padding-left:0}
+  .selos li{font-size:.8rem;gap:6px}
+  .selos svg{width:26px;height:26px}
+  .grade-sabores{grid-template-columns:repeat(2,1fr);gap:12px}
+  .sabor h3{font-size:1.25rem}
+  .cards{grid-template-columns:1fr 1fr;gap:12px}
+  .card{padding:20px 10px 16px}
+  .card h3{font-size:.98rem}
+  .card p{font-size:.85rem}
+  .faixa-revenda{grid-template-columns:1fr;text-align:center;padding:20px 16px;justify-items:center}
+  .mascote-piscando{width:170px;margin:-70px 0 -6px}
+  .revenda-txt h2,.revenda-txt p{transform:rotate(-2deg)}
+  .beneficios{grid-template-columns:repeat(2,1fr);row-gap:14px;width:100%}
+  .btn-grande{width:100%;justify-content:center}
+  .revenda{padding-top:80px}
+  .insta-in{grid-template-columns:1fr}
+  .insta-chamada{justify-content:center}
+  .insta-chamada img{width:120px}
+  .insta-freezer img{width:200px}
+  .bolha{font-size:1rem;padding:18px 14px}
+  .rodape-menu{justify-content:center;row-gap:8px}
+  .local{justify-content:center;text-align:left}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .js .revela{opacity:1;transform:none}
+}
+@media (max-width:640px){
+  .sabor:last-child:nth-child(odd){grid-column:1/-1;justify-self:center;width:calc(50% - 6px)}
+}
