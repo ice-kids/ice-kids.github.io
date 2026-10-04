@@ -107,10 +107,10 @@ svg{flex:none}
 
 /* ---------- Sabores ---------- */
 .sabores{padding:30px 0 70px}
-.grade-sabores{display:grid;grid-template-columns:repeat(7,1fr);gap:14px}
+.grade-sabores{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
 .sabor{position:relative;border-radius:var(--raio);overflow:hidden;background:linear-gradient(var(--c1),var(--c2));
   box-shadow:var(--sombra);transition:transform .25s cubic-bezier(.3,1.6,.6,1),box-shadow .25s;cursor:default}
-.sabor img{width:100%;aspect-ratio:9/10;object-fit:cover;transition:transform .4s}
+.sabor img{width:100%;aspect-ratio:1;object-fit:cover;object-position:center top;transition:transform .4s}
 .sabor h3{font-family:var(--fonte-tit);font-weight:400;font-size:1.45rem;text-align:center;padding:8px 4px 12px;color:var(--t);
   background:linear-gradient(var(--c1),var(--c2))}
 .sabor:hover{transform:translateY(-10px) rotate(-1.5deg);box-shadow:0 22px 38px rgba(60,20,60,.22)}
@@ -203,7 +203,6 @@ svg{flex:none}
 /* ---------- Responsivo ---------- */
 @media (max-width:1180px){
   .insta-link span{display:none}
-  .grade-sabores{grid-template-columns:repeat(4,1fr)}
   .faixa-revenda{grid-template-columns:170px 1fr auto;row-gap:14px}
   .mascote-piscando{width:180px}
   .beneficios{grid-column:1/-1;order:3}
@@ -276,3 +275,5 @@ svg{flex:none}
   .insta-chamada h2{transform:rotate(-2deg)}
   .pilula-insta{font-size:.95rem;padding:.55em 1em}
 }
+@media (max-width:760px){ .grade-sabores{grid-template-columns:repeat(2,1fr);gap:12px} }
+@media (max-width:640px){ .sabor h3{font-size:1.15rem} }
