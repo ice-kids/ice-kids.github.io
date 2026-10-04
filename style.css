@@ -269,3 +269,5 @@ svg{flex:none}
 @media (max-width:640px){
   .sabor:last-child:nth-child(odd){grid-column:1/-1;justify-self:center;width:calc(50% - 6px)}
 }
+@media (max-width:1320px){ .insta-link span{display:none} }
+.logo{flex:none}
